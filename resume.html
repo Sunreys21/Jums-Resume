@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Jumier Rey U. Cabañero - Resume</title>
+    
+    <style>
+        /* Hayag MOODE */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto; 
+            padding: 20px;
+            transition: color 0.3s;
+        }
+
+        /* BG VID */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            object-fit: cover; 
+            filter: brightness(0.7); 
+            transition: filter 0.3s;
+        }
+
+        .resume-container {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative; 
+            transition: background-color 0.3s;
+        }
+        
+        .theme-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            color: #fff; 
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .theme-btn:hover {
+            background-color: #1a252f;
+            transform: scale(1.1); 
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 25px;
+            border: 3px solid #2c3e50;
+        }
+        .header-info h1 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+        .header-info p {
+            margin: 2px 0;
+            font-size: 0.95em;
+        }
+        .header-info a {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        h3 {
+            margin-bottom: 5px;
+        }
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        .job-location {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .timeline {
+            border-left: 2px solid #d3d3d3; 
+            margin-left: 10px;
+            padding-left: 20px;
+        }
+        .timeline-role {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .timeline-role::before {
+            content: '';
+            position: absolute;
+            left: -26.5px; 
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            background-color: #a0a0a0;
+            border-radius: 50%;
+        }
+        .role-title {
+            margin: 0;
+            font-weight: bold;
+        }
+        .role-date {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .cert-list, .award-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .cert-item, .award-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 120px;
+        }
+        .cert-img, .award-img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+        }
+        .cert-info h4, .award-info h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 1.05em;
+        }
+        .cert-issuer, .award-meta {
+            margin: 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .cert-date {
+            margin: 0;
+            font-size: 0.85em;
+            color: #888;
+        }
+        .award-info ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+            font-size: 0.95em;
+        }
+
+        body.dark-mode {
+            color: #e0e0e0;
+        }
+        body.dark-mode .resume-container {
+            background-color: rgba(30, 30, 30, 0.85); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        body.dark-mode .theme-btn {
+            background-color: #64b5f6;
+            color: #121212; 
+        }
+        body.dark-mode .theme-btn:hover {
+            background-color: #90caf9;
+        }
+        body.dark-mode header {
+            border-bottom-color: #64b5f6;
+        }
+        body.dark-mode .profile-pic {
+            border-color: #64b5f6;
+        }
+        body.dark-mode .header-info h1,
+        body.dark-mode h2,
+        body.dark-mode h3 {
+            color: #64b5f6;
+        }
+        body.dark-mode h2 {
+            border-bottom-color: #333;
+        }
+        body.dark-mode .header-info a {
+            color: #64b5f6;
+        }
+        body.dark-mode .job-location,
+        body.dark-mode .role-date {
+            color: #aaa;
+        }
+        body.dark-mode .timeline {
+            border-left-color: #444;
+        }
+        body.dark-mode .timeline-role::before {
+            background-color: #64b5f6;
+        }
+        
+        body.dark-mode .cert-item, body.dark-mode .award-item {
+            border-color: #444;
+        }
+        body.dark-mode .cert-info h4, body.dark-mode .award-info h4 {
+            color: #e0e0e0;
+        }
+        body.dark-mode .cert-issuer, body.dark-mode .award-meta {
+            color: #aaa;
+        }
+        body.dark-mode .cert-date {
+            color: #888;
+        }
+        body.dark-mode .cert-img, body.dark-mode .award-img {
+            border-color: #444;
+            background-color: #2a2a2a;
+        }
+        body.dark-mode .award-info ul {
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="Bg_vid.mp4" type="video/mp4">
+    </video>
+
+    <div class="resume-container">
+        
+        <button class="theme-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+            <svg id="moonIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+
+            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </button>
+        
+        <header>
+            <img src="my-picture.jpg" alt="Profile Picture" class="profile-pic">
+            
+            <div class="header-info">
+                <h1>Jumier Rey U. Cabañero</h1>
+                <p><strong>Address:</strong> Iligan City, Philippines</p>
+                <p><strong>Contact:</strong> 0905 098 8697</p>
+                <p><strong>Email:</strong> <a href="mailto:jumierreycabanero@gmail.com">jumierreycabanero@gmail.com</a></p>
+            </div>
+        </header>
+
+        <h2>Objective</h2>
+        <p>To obtain an internship or entry-level position in Computer Engineering where I can apply my technical background and leadership skills to contribute to the organization's success.</p>
+        
+        <h2>Education</h2>
+        <ul>
+            <li><strong>Bachelor of Science in Computer Engineering</strong></li>
+            <li>Mindanao State University - Iligan Institute of Technology</li>
+            <li>2023 - Present</li>
+        </ul>
+
+        <h2>Skills</h2>
+        <ul>
+            <li>Programming Languages: C++, HTML, CSS, Java, etc.</li>
+            <li>Multimedia Management & Graphic Design</li>
+            <li>Leadership and Team Collaboration</li>
+        </ul>
+
+        <h2>Work Experience</h2>
+
+        <h3>Quantum Computing Society of the Philippines</h3>
+        <p class="job-location">Solid Operations Team</p>
+
+        <div class="timeline">
+            <div class="timeline-role">
+                <p class="role-title">Operations Team Member</p>
+                <p class="role-date">2025 - Present</p>
+            </div>
+        </div>
+
+        <ul>
+            <li>Managed the regular publication and distribution of digital content and organizational materials across the official QCSP page and Substack newsletter.</li>
+        </ul>
+
+        <h3>Iligan Campus DEVCON 2025</h3>
+        <p class="job-location">Campus Code Collab 2025: Empowering Student Innovators</p>
+
+        <div class="timeline">
+            <div class="timeline-role">
+                <p class="role-title">Creatives Lead</p>
+                <p class="role-date">2025</p>
+            </div>
+        </div>
+
+        <ul>
+            <li>Directed the creative vision and produced visual assets, publication materials, and multimedia content for the event.</li>
+        </ul>
+        
+        <h3>College of Engineering Executive Council Multimedia Management Committee</h3>
+        <p class="job-location">Mindanao State University - Iligan Institute of Technology, Philippines &middot; Hybrid</p>
+
+        <div class="timeline">
+            <div class="timeline-role">
+                <p class="role-title">Chairperson of Multimedia Management Committee</p>
+                <p class="role-date">Jan 2026 - Present &middot; 4 mos</p>
+            </div>
+            
+            <div class="timeline-role">
+                <p class="role-title">Undersecretary of Multimedia Management Committee</p>
+                <p class="role-date">Aug 2025 - Jan 2026 &middot; 6 mos</p>
+            </div>
+            
+            <div class="timeline-role">
+                <p class="role-title">Associate of Publication and Documentations Committee</p>
+                <p class="role-date">Jun 2024 - Aug 2025 &middot; 1 yr 3 mos</p>
+            </div>
+        </div>
+
+        <ul>
+            <li>Spearheaded digital content strategy, driving a 766.2% increase in page content interactions (53.6K total interactions).</li>
+            <li>Generated 71.2K video views and achieved over 26 days of total audience watch time.</li>
+            <li>Managed publication materials and supervised multimedia works for the student council.</li>
+        </ul>
+
+        <h2>Certificates</h2>
+        <div class="cert-list">
+            <div class="cert-item">
+                <img src="myisap-cert.jpg" alt="MYISAP Certificate" class="cert-img">
+                <div class="cert-info">
+                    <h4>MSU-IIT Young Innovators Startup Apprenticeship Program (MYISAP)</h4>
+                    <p class="cert-issuer">iDEYA: Center of Innovation and Technopreneurship @ MSU-IIT</p>
+                    <p class="cert-date">Issued Aug 2025</p>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <img src="google-io-cert.jpg" alt="Google I/O Certificate" class="cert-img">
+                <div class="cert-info">
+                    <h4>Google I/O Extended CDO 2025</h4>
+                    <p class="cert-issuer">GDG Cagayan de Oro</p>
+                    <p class="cert-date">Issued Aug 2025</p>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <img src="java-oop-cert.jpg" alt="Java OOP Certificate" class="cert-img">
+                <div class="cert-info">
+                    <h4>Java Object Oriented Programming</h4>
+                    <p class="cert-issuer">Mindanao State University-Iligan Institute of Technology</p>
+                    <p class="cert-date">Issued Jan 2025 &middot; Expires May 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Honors & Awards</h2>
+        <div class="award-list">
+            
+            <div class="award-item">
+                <div class="image-gallery">
+                    <img src="QCSP.jpg" alt="QCSP Photo" class="award-img">
+                    <img src="QCSP_Certificate.jpg" alt="QCSP Certificate" class="award-img">
+                </div>
+                <div class="award-info">
+                    <h4>Quantum Computing and Blockchain Hackathon</h4>
+                    <p class="award-meta">Issued by Quantum Computing Society of the Philippines &middot; Jun 2025</p>
+                    <ul>
+                        <li>Gained hands-on experience applying foundational quantum computing and blockchain frameworks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="image-gallery">
+                    <img src="Crop_Robothon_with_Medal.jpg" alt="Robothon Medal Photo" class="award-img">
+                    <img src="Robothon_Team.jpg" alt="Robothon Team Photo" class="award-img">
+                </div>
+                <div class="award-info">
+                    <h4>ICpEP.SE Robothon Regionals</h4>
+                    <p class="award-meta">Issued by Institute of Computer Engineers of the Philippines Region X &middot; Mar 2025</p>
+                    <ul>
+                        <li>Placed as 1st Runner Up in a highly competitive regional robotics and engineering challenge.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="image-gallery">
+                    <img src="Hack4Gov_Team_w_Coach_Haron.jpg" alt="Hack4Gov Team Photo" class="award-img">
+                    <img src="Hack4Gov_Certificate.jpg" alt="Hack4Gov Certificate" class="award-img">
+                </div>
+                <div class="award-info">
+                    <h4>Hack4Gov Region X Regionals</h4>
+                    <p class="award-meta">Issued by Department of Information and Communications Technology &middot; Nov 2005</p>
+                    <ul>
+                        <li>Competed in a regional challenge focused on cybersecurity and e-governance solutions.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <h2>References</h2>
+        
+        <p><strong>Bobby Corpus</strong><br>
+        President, OneQuantum Philippines</p>
+        
+        <p><strong>Hannah Hontiveros</strong><br>
+        Campus DEVCON Iligan 2025 Director</p>
+        
+        <p><strong>Aj Amahan</strong><br>
+        College of Engineering - Student Council 2024-2025 Governor</p>
+        
+        <p><strong>Abdul Azis Vedra Pandi</strong><br>
+        College of Engineering - Student Council 2024-2025 Governor</p>
+
+        <p><strong>Haron Hakeen D. Lua</strong><br>
+        Hack4Gov Team Coach</p>
+
+        <p><strong>Constantino A. Brasileño Jr.</strong><br>
+        TBI Coordinator</p>
+
+        <p><strong>Earl Ryan M. Aleluya</strong><br>
+        Object Oriented Programming Instructor</p>
+
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+        
+        toggleBtn.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
